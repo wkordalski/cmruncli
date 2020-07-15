@@ -32,6 +32,8 @@ from jinja2.ext import Extension
 from tool.builtin.builtins import get_builtins
 from tool.builtin.context import BuiltinContext
 
+HOST_ADDRESS = '127.0.0.1'
+
 base_dir = os.path.dirname(__file__) or '.'  # in case of no dirname, i.e. "python3 main.py"
 
 class Args:
@@ -120,7 +122,7 @@ def parseArgs():
 
 def connectToBuildServer():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect(('127.0.0.1', 4242))
+    s.connect((HOST_ADDRESS, 4242))
     return s
 
 def send(s, o):
